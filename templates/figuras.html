@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% from "_macros.html" import render_field %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Calculadora de Áreas</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label class="form-label">Selecciona una figura:</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="figura" id="circulo" value="circulo">
+                <label class="form-check-label" for="circulo">Círculo</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="figura" id="triangulo" value="triangulo">
+                <label class="form-check-label" for="triangulo">Triángulo</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="figura" id="rectangulo" value="rectangulo">
+                <label class="form-check-label" for="rectangulo">Rectángulo</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="figura" id="pentagono" value="pentagono">
+                <label class="form-check-label" for="pentagono">Pentágono</label>
+            </div>
+        </div>
+        {{ render_field(form.valor1) }}
+        {{ render_field(form.valor2) }}
+
+        <button type="submit" class="btn btn-primary">Calcular</button>
+    </form>
+    <div class="mt-4 alert alert-success" style="display: {{ 'block' if area else 'none' }};">
+        <h4>Resultado</h4>
+        <p>
+            El área del {{ figura or '' }} es: <strong>{{ "%.2f"|format(area) if area else '' }}</strong>
+        </p>
+    </div>
+</div>
+{% endblock %}
