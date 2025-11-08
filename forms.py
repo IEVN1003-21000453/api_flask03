@@ -51,4 +51,3 @@ class PizzaForm(Form):
     ])
  
     cantidad = IntegerField('Número de pizzas', [validators.DataRequired()])
- 

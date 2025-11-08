@@ -244,7 +244,5 @@ def pizzas():
                            ventas=ventas_lista,
                            total_general=total_general)
 
-
-
 if __name__ == '__main__':
     app.run(debug=True)
