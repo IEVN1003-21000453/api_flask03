@@ -1,4 +1,4 @@
-from wtforms import Form, StringField, FloatField, EmailField, PasswordField, IntegerField, SelectField
+from wtforms import Form, StringField, FloatField, EmailField, PasswordField, IntegerField, SelectField, SelectMultipleField
 from wtforms import validators
 
 class UserForm(Form):
@@ -27,3 +27,28 @@ class FigurasForm(Form):
         'Valor 2 (si aplica)',
         [validators.Optional()]
     )
+
+
+class ClienteForm(Form):
+    nombre = StringField('Nombre completo', [validators.DataRequired()])
+    direccion = StringField('Dirección', [validators.DataRequired()])
+    telefono = StringField('Teléfono', [
+        validators.DataRequired(),
+        validators.Length(min=8, max=15, message="Número de teléfono no válido")
+    ])
+   
+class PizzaForm(Form):
+    tamano = SelectField('Tamaño', choices=[
+        ('chica', 'Chica'),
+        ('mediana', 'Mediana'),
+        ('grande', 'Grande')
+    ], validators=[validators.DataRequired()])
+ 
+    ingredientes = SelectMultipleField('Ingredientes', choices=[
+        ('jamon', 'Jamón'),
+        ('piña', 'Piña'),
+        ('champiñones', 'Champiñones')
+    ])
+ 
+    cantidad = IntegerField('Número de pizzas', [validators.DataRequired()])
+ 

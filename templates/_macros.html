@@ -37,3 +37,14 @@
 {% endmacro %}
 
 
+
+{% macro campoNuevo(campo) %}
+<div class="mb-3">
+    {{ campo.label(class="form-label fw-bold") }}
+    {{ campo(class="form-control") }}
+    {% if campo.errors %}
+        <div class="text-danger small">{{ campo.errors[0] }}</div>
+    {% endif %}
+</div>
+{% endmacro %}
+
