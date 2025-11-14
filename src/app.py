@@ -45,7 +45,10 @@ def leer_curso(mat):
         return jsonify({'mensaje': f'Error: {str(ex)}', 'exito': False})
 
 
+
+
 def leer_alumno_bd(matricula):
+
     try:
         cursor = conexion.connection.cursor()
         sql = "SELECT matricula, nombre, apaterno, amaterno, correo FROM alumnos WHERE matricula = %s"
