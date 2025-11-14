@@ -32,7 +32,6 @@ def listar_alumnos():
     except Exception as ex:
         return jsonify({'mensaje': f'Error al listar alumnos: {str(ex)}', 'exito': False})
 
-
 @app.route('/alumnos/<mat>', methods=['GET'])
 def leer_curso(mat):
     try:
