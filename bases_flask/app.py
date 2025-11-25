@@ -9,7 +9,6 @@ app = Flask(__name__)
 def home():
     return "Hello World"
 
-
 @app.route("/alumnos", methods=['GET', 'POST'])
 def alumnos():
     alumnos_clase = forms.UserForm(request.form)
@@ -21,7 +20,6 @@ def alumnos():
         nom = alumnos_clase.nombre.data
         ape = alumnos_clase.apellido.data
         em = alumnos_clase.correo.data
-
         datos = {
             "matricula": mat,
             "nombre": nom,
